@@ -51,31 +51,30 @@ const getMinecraftColorClass = (colorLetter, previousColor) => {
 }
 
 const ColoredText = ({text}) => {
-    if (!text) return <></>;
+    // defensive check
+    // make sure element is a string, causes an error in the LiteBans kick history tab if text is not a string
+    if (typeof text !== 'string') return <></>;
 
     const parts = text.split(text.includes('&sect;') ? '&sect;' : '§');
     const htmlElements = [];
     let previousColor = undefined;
-    let i = 0;
-    for (const part of parts) {
-        // Don't take away letters if text doesn't start with a color.
-        // Also appends whole text if there is no colors in entire text.
+
+    parts.forEach((part, i) => {
         if (i === 0 && !(text.startsWith('§') || text.startsWith('&sect;'))) {
             htmlElements.push(part);
         } else {
             const minecraftColorClass = getMinecraftColorClass(part[0], previousColor);
             previousColor = minecraftColorClass;
-            htmlElements.push(<span key={'part-' + i}
-                                    className={minecraftColorClass}>{part.substring(1)}</span>);
+            htmlElements.push(
+                <span key={'part-' + i} className={minecraftColorClass}>
+                    {part.substring(1)}
+                </span>
+            );
         }
-        i++;
-    }
+    });
 
-    return (
-        <>
-            {htmlElements}
-        </>
-    )
+    return <>{htmlElements}</>;
 };
+
 
 export default ColoredText
