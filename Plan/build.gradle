@@ -11,7 +11,6 @@ plugins {
     id("base")
     id "org.sonarqube" version "6.2.0.5505"
     id "com.gradleup.shadow" version "9.0.0-beta6" apply false
-    id "fabric-loom" version "1.9-SNAPSHOT" apply false
 }
 
 apply plugin: "nebula-aggregate-javadocs"
@@ -104,8 +103,6 @@ subprojects {
         google()
         maven { url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" } // Spigot
         maven { url = "https://repo.papermc.io/repository/maven-public/" } // Paper
-        maven { url = "https://repo.spongepowered.org/repository/maven-public/" } // Sponge
-        maven { url = "https://oss.sonatype.org/content/repositories/snapshots" } // BungeeCord
         maven { url = "https://repo.playeranalytics.net/releases" } // Plan
         maven { url = "https://repo.md-5.net/content/repositories/snapshots/" } // RedisBungee
         maven { url = "https://jitpack.io" } // RedisBungee fork

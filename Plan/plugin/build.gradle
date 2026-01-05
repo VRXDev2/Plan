@@ -9,9 +9,6 @@ dependencies {
     implementation project(":extensions")
     implementation project(":common")
     implementation project(":bukkit")
-    implementation project(":nukkit")
-    implementation project(":sponge")
-    implementation project(":bungeecord")
     implementation project(":velocity")
 
     // Shadow configuration required to depend on Folia due to newer Java version
